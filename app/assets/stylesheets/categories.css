@@ -1,0 +1,54 @@
+@import 'table';
+
+.space
+{
+	padding: 5%;
+}
+
+.btn-floating
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+input[type=number]
+{
+	max-width: 40px;
+}
+
+.actions
+{
+	margin-top: -15px;
+}
+
+.card-content
+{
+	font-size: 1.2em;
+}
+
+.layer
+{
+	width: 100%;
+	height: 100%;
+	opacity: 0.6;
+}
+
+.card-image
+{
+	background-color: #DDDDDD;
+}
+
+.input-field
+{
+	margin-top: -10px;
+}
+
+input[type=submit]
+{
+	background-color: transparent;
+	text-transform: uppercase;
+	border: none;
+	color: #ffab40;
+	cursor: pointer;
+	padding: 0;
+}

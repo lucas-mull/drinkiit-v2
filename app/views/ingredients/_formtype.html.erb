@@ -1,0 +1,14 @@
+<!-- Formulaire d'ajout d'un nouveau type d'ingrédient (invisible au début) -->
+<%= form_for @type, url: create_type_path, remote: true do |f| %>
+	<div class="col s10">
+		<div class="input-field">
+			<%= f.text_field :name %>
+			<label for="ingredient_type_name">Nom de la catégorie</label>
+		</div>
+	</div>
+	<div class="col s2">
+		<button class="btn-floating waves-effect waves-circle waves-light tooltipped" data-position="bottom" data-delay="20" data-tooltip="Valider la création" type="submit" name="commit">
+			<i class="material-icons right">done</i>
+		</button>
+	</div>
+<% end %>

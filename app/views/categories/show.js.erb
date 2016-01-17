@@ -1,0 +1,9 @@
+$('#meal-container').html("<%= j (render 'meals') %>");
+$('.wait').hide();
+$('.tooltipped').tooltip({delay: 50});
+var containerY = $("#meal-container").offset().top - 100;
+if (window.scrollY < containerY) {
+	$('html, body').animate({
+    	scrollTop: containerY
+	}, 500);
+}

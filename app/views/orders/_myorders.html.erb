@@ -1,0 +1,61 @@
+<div class="row header">
+	<div class="col s4">Produit</div>
+	<div class="col s1">Quantité</div>
+	<div class="col s1">Total</div>
+	<div class="col s3">Commentaire</div>
+	<div class="col s3">Actions</div>
+</div>
+<ul class="collapsible" data-collapsible="accordion">
+	<li>
+      <div class="collapsible-header active center teal lighten-2 white-text"><i class="material-icons">room_service</i>COMMANDES EN ATTENTE</div>
+      <div class="collapsible-body">
+      <div class="table striped">
+      <% if !(@notserved.empty?) %>
+      	<% @notserved.each do |order| %>
+      		<div class="row" id="nomargin">
+      			<div class="col s4"><%= order.meal.description %></div>
+      			<div class="col s1"><%= order.quantity %></div>
+      			<div class="col s1"><%= order.total %>€</div>
+      			<div class="col s3"><%= order.comment %></div>
+      			<div class="col s3">
+      				<%= link_to delete_order_path(:id => order.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1", :data => { :method => 'delete', :tooltip => "Supprimer la commande", :delay => '20', :position => 'bottom', :confirm => "Supprimer cette commande ?", :remote => true} do %>
+          				<i class="material-icons left">delete</i>
+        			<% end %>
+      			</div>
+      		</div>
+      	<% end %>
+      <% else %>
+      	<div class="row center" id="nomargin">
+      		<div class="col s12">Aucune commande dans cette catégorie</div>
+      	</div>
+      <% end %>
+      </div>
+      </div>
+    </li>	
+    <li>
+		<div class="collapsible-header center teal lighten-2 white-text"><i class="material-icons">restaurant_menu</i>COMMANDES SERVIES</div>
+		<div class="collapsible-body">
+		<div class="table striped">
+		<% if !(@served.empty?) %>
+			<% @served.each do |order| %>
+				<div class="row" id="nomargin">
+	      			<div class="col s4"><%= order.meal.description %></div>
+	      			<div class="col s1"><%= order.quantity %></div>
+	      			<div class="col s1"><%= order.total %></div>
+	      			<div class="col s3"><%= order.comment %></div>
+	      			<div class="col s3">
+	      				<%= link_to delete_order_path(:id => order.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1 disabled", :data => { :method => 'delete', :tooltip => "Supprimer la commande", :delay => '20', :position => 'bottom', :confirm => "Supprimer cette commande ?", :remote => true} do %>
+              				<i class="material-icons left">delete</i>
+            			<% end %>
+	      			</div>
+	      		</div>
+      		<% end %>
+      	<% else %>
+      		<div class="row center" id="nomargin">
+				<div class="col s12">Aucune commande dans cette catégorie</div>
+			</div>
+      	<% end %>
+      	</div>
+		</div>
+	</li>		
+</ul>

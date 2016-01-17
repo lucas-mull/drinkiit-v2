@@ -1,0 +1,4 @@
+Materialize.toast("Repas supprimé !", 4000, 'blue');
+$('.tooltipped').tooltip('remove');
+$('#meal-container').html("<%= j (render 'categories/meals') %>");
+$('.tooltipped').tooltip({delay: 50});

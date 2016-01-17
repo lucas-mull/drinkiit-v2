@@ -1,0 +1,45 @@
+<div class="row header" id="nomargin">
+  <div class="col s2">Nom</div>
+  <div class="col s2">Prénom</div>
+  <div class="col s3">E-mail</div>
+  <div class="col s2">Solde</div>
+  <div class="col s1">Admin</div>
+  <div class="col s2">Actions</div>
+</div>
+
+<ul class="collapsible" data-collapsible="accordion">
+<% @users.keys.each do |promo| %>
+  <li>
+    <div class="collapsible-header center-align teal lighten-2 white-text"><i class="material-icons">group</i>PROMOTION <%= promo %></div>
+    <div class="collapsible-body">
+      <div class="table striped">
+        <% @users["#{promo}"].each do |user| %>
+          <div class="row" id="nomargin">
+          <%= form_for user, url: update_user_path(:id => user.id), remote: true do |f| %>
+            <%= hidden_field_tag 'id', user.id %>   
+            <div class="col s2"><div><%= user.lastname %></div></div>
+            <div class="col s2"><div><%= user.name %></div></div>
+            <div class="col s3"><div><%= user.email %></div></div>
+            <div class="col s2"><%= f.number_field :solde, :step => 'any' %>€</div>
+            <div class="col s1">
+              <%= f.check_box :admin, :id => user.id %>
+              <label for=<%=user.id%>></label>              
+            </div>
+            <div class="col s2">
+              <button class="btn-floating waves-effect waves-circle waves-light tooltipped disabled" data-position="bottom" data-delay="20" data-tooltip="Appliquer les changements" type="submit" name="commit" disabled="disabled">
+                <i class="material-icons right">done</i>
+              </button>  
+              <% if user != current_user %>       
+                <%= link_to delete_user_path(:id => user.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1", :data => { :method => 'delete', :tooltip => "Supprimer l'utilisateur", :delay => '20', :position => 'bottom', :confirm => "Supprimer cet utilisateur ?", :remote => true} do %>
+                  <i class="material-icons left">delete</i>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  uid: MyString
+  lastname: MyString
+  name: MyString
+  solde: 1.5
+
+two:
+  id: 
+  uid: MyString
+  lastname: MyString
+  name: MyString
+  solde: 1.5

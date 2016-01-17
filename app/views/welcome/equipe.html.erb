@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "equipe" %>
+<%= javascript_include_tag "welcome" %>
+<%= image_tag "ajax-loader.gif", class:"wait" %>
+<div id="team">
+  <div>
+    <ul>
+      <li><%= link_to "2011-2012", controller: "welcome", action: "equipe", year: 2011 %></li>
+      <li><%= link_to "2012-2013", controller: "welcome", action: "equipe", year: 2012 %></li>
+      <li><%= link_to "2013-2014", controller: "welcome", action: "equipe", year: 2013 %></li>
+      <li><%= link_to "2014-2015", controller: "welcome", action: "equipe", year: 2014 %></li>
+      <li><%= link_to "2015-2016", controller: "welcome", action: "equipe", year: 2015 %></li>
+    </ul>
+  </div>
+</div>
+   
+<div id="main">
+  <ul>
+    <% @team.each do |member| %>
+    <li><%= image_tag "#{member["image"]}" %>
+    <span><%= member["name"] %></span>       
+    </li>
+    <% end %>  
+    <br>  
+  </ul>  
+</div>

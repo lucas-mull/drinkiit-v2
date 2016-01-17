@@ -1,0 +1,39 @@
+.row#nomargin
+{
+	margin: 0;
+}
+
+.table
+{
+	display: table;
+	width: 100%;
+}
+
+.striped > div.row:nth-child(odd) 
+{
+    background-color: #f2f2f2; 
+}
+
+.header
+{
+	font-weight: bold;
+	border-bottom: 1px solid black;
+}
+
+.col.s1, .col.s2, .col.s3, .col.s4, .col.s5, .col.s6, .col.s7, .col.s8, .col.s9, .col.s10, .col.s11, .col.s12
+{
+	margin-top: 15px;
+	display: table-cell;
+	padding: 15px 5px 5px 15px;
+	vertical-align: middle;
+}
+
+input[type=number]
+{
+	max-width: 50px;
+}
+
+.btn-floating
+{
+	margin-top: -5px;
+}

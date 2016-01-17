@@ -1,0 +1,7 @@
+Materialize.toast("Repas créé !", 4000, 'blue');
+var btnAdd = $('#actions').find('a')
+btnAdd.removeClass('disabled');
+btnAdd.prop('disabled', false);
+$('.tooltipped').tooltip('remove');
+$('#meal-container').html("<%= j (render 'categories/meals') %>");
+$('.tooltipped').tooltip({delay: 50});

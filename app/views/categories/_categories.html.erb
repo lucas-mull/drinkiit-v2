@@ -1,0 +1,55 @@
+<% if current_user.admin %>
+
+	<div class="row">
+	<% @categories.each do |category| %>
+		<div class="space col s4">	
+			<div class="card medium hoverable brown">
+				<%= form_for category, url: update_category_path(:id => category.id), remote: true do |f| %>
+		        <div class="card-image">
+		        	<div class="layer">
+		          		<%= image_tag "categories/#{category.name}.png", :alt => "Image introuvable", :class => "backup_picture" %>
+		          	</div>
+		          <span class="card-title normal"><%= category.name %></span>
+		          <%= f.text_field :name, :class => "card-title form" %>
+		        </div>
+		        <div class="card-content white-text">
+		          <p class="normal"><%= category.description %></p>
+		          <div class="input-field">
+		          	<%= f.text_area :description, :class => "form materialize-textarea" %></p>
+		          </div>
+		        </div>
+		        <div class="card-action center">
+		          	<%= link_to 'Voir', show_category_path(:id => category.id), :id =>"btn-commander", remote: true, :class => 'async-action' %>
+	          		<a href="#" class="normal btn-admin">Modifier</a>
+	          		<%= f.submit 'Valider', :class => 'form' %>
+		        </div>
+		        <% end %>
+		  	</div>
+		</div>
+	<% end %>
+	</div>
+
+<% else %>
+
+	<div class="row">
+		<% @categories.each do |category| %>
+			<div class="space col s4">	
+				<div class="card medium hoverable brown">
+			        <div class="card-image">
+			        	<div class="layer">
+			          		<%= image_tag "categories/#{category.name}.png", :alt => "Image introuvable", :class => "backup_picture" %>
+			          	</div>
+			          <span class="card-title"><%= category.name %></span>
+			        </div>
+			        <div class="card-content white-text">
+			          <p><%= category.description %></p>
+			        </div>
+			        <div class="card-action center">
+			          <%= link_to 'Voir', show_category_path(:id => category.id), :id =>"btn-commander", remote: true, :class => 'async-action' %>
+			        </div>
+			  	</div>
+			</div>
+		<% end %>
+	</div>
+
+<% end %>

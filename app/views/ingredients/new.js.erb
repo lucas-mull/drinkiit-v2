@@ -1,0 +1,6 @@
+$('.tooltipped').tooltip('remove');
+$('#new_ingredient').html("<%= j (render 'form') %>");
+$('.tooltipped').tooltip({delay: 50});
+$('.collapsible').collapsible({
+      accordion : false
+});

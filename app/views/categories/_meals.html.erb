@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag "categories" %>
+
+<% if !@standalones.empty? %>	
+      <div class="row header">
+        <div class="col s2">Produit</div>
+        <div class="col s2">Prix</div>
+        <div class="col s2">Quantité</div>
+        <div class="col s3">Commentaire</div>
+        <div class="col s3">Actions</div>
+	  </div>
+
+	  <div class="striped table">
+		
+		
+		<% @standalones.each do |meal| %>
+			<div class="row" id="nomargin">
+				<div class="col s2"><%= meal.description %></div>
+				<div class="col s2"><%= meal.price %> €</div>
+				<%= form_for @order, url: create_order_path, remote: true do |f| %>
+				<%= f.hidden_field :meal_id, :value => meal.id %>
+				<%= f.hidden_field :user_id %>
+				<div class="col s2">	
+					<div class="input-field">					
+						<%= f.number_field :quantity, :min => "1" %>
+					</div>
+				</div>
+				<div class="col s3">
+					<div class="input-field">
+						<%= f.text_field :comment, :id => "order_comment_#{meal.id}" %>
+						<label for=<%= "order_comment_#{meal.id}" %>>Ajoute ton grain de sel !</label>
+					</div>
+				</div>
+				<div class="col s3">
+					<button class="btn-floating waves-effect waves-circle waves-light tooltipped" data-position="bottom" data-delay="20" data-tooltip="Ajouter au panier" type="submit" name="commit">
+        				<i class="material-icons right">shopping_cart</i>
+        			</button>
+        			<% if current_user.admin %>
+        				<%= link_to delete_meal_path(:id => meal.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1", :data => { :method => 'delete', :tooltip => "Supprimer le plat", :delay => '20', :position => 'bottom', :confirm => "Supprimer ce plat ?", :remote => true} do %>
+                  			<i class="material-icons left">delete</i>
+                		<% end %>
+        			<% end %>
+				</div>
+				<% end %>
+			</div>
+		<% end %>
+		
+		<div class="row new_meal" id="nomargin" style="display: none;">
+			<!-- Ligne pour ajouter un plat	-->
+		</div>
+		<br>
+	</div>
+<% end %>
+<div class="center" id="actions">
+	<% if current_user.admin %>
+		<%= link_to new_meal_path(:category_id => @category.id, :standalone => true), :class => "btn-floating tooltipped waves-effect waves-circle waves-light", :data => { :delay => "20", :position => "bottom", :tooltip => "Ajouter un plat (sans recette)", :remote => true} do %>
+			<i class = "material-icons">add</i>
+		<% end %>
+	<% end %>
+</div>
+
+<% if !@composed.empty? %>
+
+	<% @composed.each do |meal| %>
+		<h4>Composez votre <%= meal.description %></h4>
+	<% end %>
+
+<% end %>
+<% if current_user.admin %>
+	<%= link_to 'Ajouter un plat (avec recette)', new_meal_path(:category_id => @category.id, :standalone => false), remote: true %>
+<% end %>

@@ -1,0 +1,74 @@
+<ul class="collapsible" data-collapsible="accordion">
+	<li>
+		<div class="collapsible-header active center teal lighten-2 white-text"><i class="material-icons">room_service</i>COMMANDES DU JOUR</div>
+
+		<% if !@today.empty? %>
+			<div class="collapsible-body">
+
+				<div class="row header" id="nomargin">
+					<div class="col s2">Personne</div>
+					<div class="col s3">Produit</div>
+					<div class="col s1">Quantité</div>
+					<div class="col s3">Commentaire</div>
+					<div class="col s3">Actions</div>
+				</div>
+
+		      	<div class="table striped">
+
+			      	<% @today.each do |order| %>
+			      		<div class="row" id="nomargin">
+			      			<div class="col s2"><%= order.user.fullname %></div>
+			      			<div class="col s3"><%= order.meal.description %></div>
+			      			<div class="col s1"><%= order.quantity %></div>
+			      			<div class="col s3"><%= order.comment %></div>
+			      			<div class="col s3">
+			      				<%= link_to validate_order_path(:id => order.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-teal teal lighten-1", :data => { :method => 'patch', :tooltip => "Archiver la commande (servie)", :delay => '20', :position => 'bottom', :remote => true} do %>
+	                  				<i class="material-icons left">done</i>
+	                			<% end %>
+	                			<%= link_to delete_order_path(:id => order.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1", :data => { :method => 'delete', :tooltip => "Supprimer la commande", :delay => '20', :position => 'bottom', :remote => true, :confirm => 'Supprimer la commande ?' } do %>
+	                  				<i class="material-icons left">delete</i>
+	                			<% end %>
+			      			</div>
+			      		</div>
+		      		<% end %>
+			      </div>
+		      </div>
+		<% else %>
+			<div class="collapsible-body center">
+		      	Aucune commande aujourd'hui
+	      	</div>
+		<% end %>		
+	</li>
+	<li>
+		<div class="collapsible-header center teal lighten-2 white-text"><i class="material-icons">restaurant_menu</i>HISTORIQUE DES COMMANDES</div>
+
+		<% if !@historique.empty? %>
+			<div class="collapsible-body">
+
+				<div class="row header" id="nomargin">
+					<div class="col s3">Date</div>
+					<div class="col s2">Personne</div>
+					<div class="col s3">Produit</div>
+					<div class="col s1">Quantité</div>
+					<div class="col s3">Commentaire</div>
+				</div>
+
+		      	<div class="table striped">
+			      	<% @historique.each do |order| %>
+			      		<div class="row" id="nomargin">
+			      			<div class="col s3"><%= order.ordered_at %></div>
+			      			<div class="col s2"><%= order.user.fullname %></div>
+			      			<div class="col s3"><%= order.meal.description %></div>
+			      			<div class="col s1"><%= order.quantity %></div>
+			      			<div class="col s3"><%= order.comment %></div>
+			      		</div>
+	      			<% end %>
+	      		</div>
+  			</div>
+		<% else %>
+			<div class="collapsible-body center">
+		      	Rien à montrer
+	      	</div>
+		<% end %>
+	</li>
+</ul>

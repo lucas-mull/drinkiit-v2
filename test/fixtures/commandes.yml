@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ordered_at: 2015-11-22 13:02:52
+  served: false
+  total: 1.5
+
+two:
+  ordered_at: 2015-11-22 13:02:52
+  served: false
+  total: 1.5

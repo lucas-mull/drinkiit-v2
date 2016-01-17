@@ -1,0 +1,7 @@
+var btnAdd = $('#actions').find('a')
+btnAdd.addClass('disabled');
+btnAdd.prop('disabled', true);
+$('.tooltipped').tooltip('remove');
+$('.new_meal').html("<%= j (render 'form') %>");
+$('.new_meal').show();
+$('.tooltipped').tooltip({delay: 50});

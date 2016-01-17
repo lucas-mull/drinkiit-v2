@@ -1,0 +1,54 @@
+<div class="row header">
+	<div class="col s10">Nom de l'ingrédient</div>
+	<div class="col s2">Actions</div>
+</div>
+<div class="row">
+	<ul class="collapsible" data-collapsible="accordion">
+	<% @types.each do |type| %>
+		<li>
+	      <div class="collapsible-header center teal lighten-2 white-text"><%= type.name %></div>
+	      <div class="collapsible-body">
+	      <div class="table striped">
+			<% type.ingredients.each do |ingredient| %>
+			<%= form_for ingredient, url: update_ingredient_path(:id => ingredient.id), remote: true do |f| %>
+			<div class="row" id="nomargin">
+				<div class="col s10">
+					<%= f.text_field :name %>
+				</div>
+				<div class="col s2">
+					<button class="btn-floating waves-effect waves-circle waves-light tooltipped disabled" data-position="bottom" data-delay="20" data-tooltip="Appliquer les changements" type="submit" name="commit" disabled="disabled">
+	                	<i class="material-icons right">done</i>
+	              	</button>
+
+	              	<%= link_to delete_ingredient_path(:id => ingredient.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-red red lighten-1", :data => { :method => 'delete', :tooltip => "Supprimer l'ingrédient", :delay => '20', :position => 'bottom', :confirm => "Supprimer cet ingrédient ?", :remote => true} do %>
+	                  <i class="material-icons left">delete</i>
+	                <% end %>
+				</div>
+			</div>
+			<% end %>
+			<% end %>
+
+			<!-- Ligne pour ajout d'un ingrédient -->
+			<div class="row actions" id="new_ingredient">
+				<!-- Placeholder avec le bouton 'ajout' à cliquer -->
+				<div class="col s12 center">
+					<%= link_to new_ingredient_path(:ingredient_type_id => type.id), :class => "btn-floating tooltipped waves-effect waves-circle waves-light", :data => { :delay => "20", :position => "bottom", :tooltip => "Ajouter un ingrédient", :remote => true} do %>
+						<i class = "material-icons">add</i>
+					<% end %>
+				</div>
+			</div>
+	      </div>
+	      </div>
+      	</li>
+	<% end %>
+	</ul>
+
+	<!-- Ligne pour ajouter un type d'ingrédient (= une catégorie) -->
+	<div class="actions center" id="new_ingredient_type">
+		<!-- Placeholder avec le bouton 'ajout' à cliquer -->
+		<%= link_to new_type_path, :class => "btn-floating tooltipped waves-effect waves-circle waves-light", :data => { :delay => "20", :position => "bottom", :tooltip => "Ajouter une catégorie", :remote => true} do %>
+			<i class = "material-icons">add</i>
+		<% end %>
+	</div>
+
+</div>

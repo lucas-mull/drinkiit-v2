@@ -1,0 +1,12 @@
+@import 'table';
+
+.btn-floating
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+input[type=number]
+{
+	margin-top: -20px;
+}

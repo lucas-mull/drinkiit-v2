@@ -1,0 +1,15 @@
+<!-- Formulaire d'ajout d'un nouvel ingrédient (invisible au début) -->
+<%= form_for @ingredient, url: create_ingredient_path, remote: true do |f| %>
+	<%= f.hidden_field :ingredient_type_id %>
+	<div class="col s10">
+		<div class="input-field">
+			<%= f.text_field :name %>
+			<label for="ingredient_name">Nom de l'ingrédient</label>
+		</div>
+	</div>
+	<div class="col s2">
+		<button class="btn-floating waves-effect waves-circle waves-light tooltipped" data-position="bottom" data-delay="20" data-tooltip="Valider la création" type="submit" name="commit">
+			<i class="material-icons right">done</i>
+		</button>
+	</div>
+<% end %>

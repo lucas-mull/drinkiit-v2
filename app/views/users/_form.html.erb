@@ -1,0 +1,43 @@
+<div class="container">
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="input-field col s6">
+      <%= f.text_field :lastname %>
+      <label for="user_last_name">Nom</label>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :name %>
+      <label for="user_name">Prénom</label>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :uid %>
+      <label for="user_uid">Identifiant</label>
+    </div>
+    <div class="input-field col s6">
+      <%= f.text_field :promo %>
+      <label for="user_promo">Promo</label>
+    </div>
+    <div class="input-field col s6">
+      <%= f.email_field :email %>
+      <label for="user_email">Email</label>
+    </div>
+    <div class="input-field col s6">
+      <%= f.number_field :solde, :step => 'any' %>
+      <label for="user_solde">Solde initial</label>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Créer" %>
+    </div>
+  <% end %>
+</div>

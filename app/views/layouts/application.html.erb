@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+  <title>Drinkiit</title>
+
+  <!-- StyleSheets -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+  <%= stylesheet_link_tag    'style', media: 'screen, projection' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+
+  <!--  Scripts-->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+
+<div id="placeholder"><div></div></div>
+<div class="navbar-fixed drinkiit-navbar">
+    <ul id="dropdown-actions" class="dropdown-content">
+      <li><a href="/order/categories">commander</a></li>
+      <li><a href="/orders">mes commandes</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">mon profil</a></li>
+      <% if current_user.admin %>
+        <li class="divider"></li>
+        <li><a href="/orders/all">commandes du jour</a></li>
+        <li class="divider"></li>
+        <li><a href="/users">gestion des utilisateurs</a></li>
+        <li><a href="/ingredients">gestion des ingrédients</a></li>
+      <% end %>
+    </ul>
+  <nav class="white">
+    <div class="nav-wrapper drinkiit-menu">
+      <%= image_tag "logo.png", class:"drinkiit-logo brand-logo"%></a> 
+      <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down drinkiit-navbar">
+        <li class="star-icon"><%= image_tag "star.png" %></li>
+        <li><a href="/">accueil</a></li>
+        <li class="star-icon"><%= image_tag "star.png" %></li>
+        <li><a href="/equipe">l'équipe</a></li>
+        <li class="star-icon"><%= image_tag "star.png" %></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown-actions">actions<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li class="star-icon"><%= image_tag "star.png" %></li>
+        <li><a href="#">solde : <%= current_user.solde %> €</a></li>
+        <li class="star-icon"><%= image_tag "star.png" %></li>
+      </ul>
+      <ul class="side-nav" id="mobile">
+        <li><a href="/">accueil</a></li>
+        <li><a href="/equipe">l'équipe</a></li>
+        <li><a href="#">solde : <%= current_user.solde %> €</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+  
+
+  <%= yield %>
+
+  <footer class="page-footer red lighten-1">
+    <div class="container">
+      <div class="row">
+        <h5 class="col s12 white-text center-align">Découvre l'IIE Strasbourg</h5>
+      </div>
+      <div class="row center-align">
+        <a class="white-text col s4" href="#!">LE BDE</a>
+        <a class="white-text col s4" href="https://ares-ensiie.eu/">L'INTRANET</a>
+        <a class="white-text col s4" href="https://ragots.ares-ensiie.eu/">LES RAGOTS</a>
+      </div>
+    </div>
+    <div class="footer-copyright row">
+      <p class="col s12 center-align white-text">Site web réalisé par Lucas Mull</p>
+    </div>
+  </footer> 
+
+</body>
+</html>

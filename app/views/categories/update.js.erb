@@ -1,0 +1,8 @@
+$('#content').html("<%= j (render 'categories') %>");
+Materialize.toast("Catégorie mise à jour !", 4000, "blue");
+$('.form').hide();
+$('.btn-admin').click(function(){
+	var card = $(this).closest('.card')
+	card.find('.form').show();
+	card.find('.normal').hide();  	
+});

@@ -1,0 +1,13 @@
+var color = 'blue';
+<% if !@success %>
+	color = 'red';
+<% end %>
+
+Materialize.toast('<%= j @message %>', 4000, color);
+
+<% if @success %>
+	$('#content').html("<%= j (render 'users') %>");
+	$('.collapsible').collapsible({
+	      accordion : false
+	});
+<% end %>

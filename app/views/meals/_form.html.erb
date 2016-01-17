@@ -1,0 +1,22 @@
+<%= form_for @meal, url: create_meal_path, remote: true do |f| %>
+	<%= f.hidden_field :category_id %>
+	<%= f.hidden_field :standalone %>
+	<div class="col s4">
+		<div class="input-field">
+			<%= f.text_field :description %>
+			<label for="meal_description">Description / nom du plat</label>
+		</div>
+	</div>
+	<div class="col s2">
+		<div class="input-field">
+			<%= f.number_field :price, :step => 'any' %>€
+			<label for="meal_price">Prix</label>
+		</div>
+	</div>
+	<div class="col s3"></div>
+	<div class="col s3">
+		<button class="btn-floating waves-effect waves-circle waves-light tooltipped" data-position="bottom" data-delay="20" data-tooltip="Valider la création" type="submit" name="commit">
+			<i class="material-icons right">add</i>
+		</button>
+	</div>
+<% end %>

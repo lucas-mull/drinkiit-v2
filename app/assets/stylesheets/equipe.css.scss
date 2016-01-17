@@ -1,0 +1,118 @@
+@font-face{
+	font-family: 'lovelo';
+	src : url('/assets/loveloblack.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.wait{
+	display: block;
+	margin: 0 auto;
+	margin-top: 10em;
+	width: auto;
+	text-align: center;
+	/* border: solid 1px red */
+}
+
+
+#team{
+	margin: 0 auto;
+	max-width:51em;
+	/*min-height: 10em;*/
+	height: auto;
+	width : 100%;
+	/* margin-bottom: 3em; */
+	display: none;/* we wait for the page to be loaded */
+	/* border:solid 1px red; */
+}
+
+#team div{
+	margin: inherit;
+	margin-top: -0.15em;
+	padding: 0.2em;
+	max-width: 50em;
+	width: 100%;
+	display: block;
+	text-align: center;
+	position: fixed;
+	/* border:solid 2px #422918; */
+	font-family: 'lato';
+	font-weight: bolder;
+} 
+
+#team li{
+	display: inline-block;
+	margin-right: 1.2em; 
+	margin-left : 1.2em;
+	list-style : none;
+}
+
+#team a{
+	 text-decoration: none;
+	 color : white;
+	 border : solid 2px #422918;
+	 padding-left: 0.5em;
+	 padding-right: 0.5em;
+	 background-color: #422918; 
+}
+
+#team a:hover{
+	color: #33b199; 
+}
+
+#main{
+	margin: 0 auto;
+	padding-top: 4em;
+	/* border:solid 1px green; */ 
+}
+
+#main{
+	display: block;
+	text-align: center;
+	margin-left: 15%;
+	margin-right:  15%;
+	margin-bottom: 2%;
+}
+#main li{
+	display: inline-block;
+	transition : 0.35s;
+}
+#main img{
+	width : 13em;
+	padding: 1.2em 1.2em 1.2em 1.2em;
+}
+
+#main span{
+	display: none;
+	z-index: 90;
+	transition: 0.55s;
+	margin: 0 auto;
+	text-align: center;
+	width : 10em;/* width of the image */
+	margin-top : -2em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	padding-left : -0.5em;
+	padding-right : -0.5em;
+	/* margin-left : -5em; *//* half the width */
+	font-family: 'lovelo';
+	font-size: 1.2em;
+	/* border: solid 1px red; */
+	background-color: rgba(51,177,153,1);
+	color : white;
+	position: absolute;
+}
+
+
+#main li:hover{
+	transform: scale(1.2); 
+	-webkit-transform: scale(1.2);
+	-ms-transform : scale(1.2);
+	-moz-transform : scale(1.2);
+}
+
+#main li:hover span{
+	display: block;
+	
+	
+}
